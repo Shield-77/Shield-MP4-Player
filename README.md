@@ -1,5 +1,7 @@
 # SHIELD MP4 Player
 
+**Codex was used to generate the code**
+
 Lecteur de vidéos MP4 **locales** pour 3DS, pensé pour Old 3DS. Il parcourt la carte SD, affiche la vidéo sur l'écran supérieur et propose lecture/pause, sauts de cinq secondes et luminosité. Il n'utilise pas le réseau.
 
 ## Version actuelle
