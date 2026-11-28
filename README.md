@@ -2,6 +2,8 @@
 
 Lecteur de vidéos MP4 **locales** pour 3DS, pensé pour Old 3DS. Il parcourt la carte SD, affiche la vidéo sur l'écran supérieur et propose lecture/pause, sauts de cinq secondes et luminosité. Il n'utilise pas le réseau.
 
+**Provenance des binaires :** les archives FFmpeg historiques ne sont pas redistribuées dans ce dépôt ; leur correspondance avec les sources et les options du CIA publié reste à établir. Voir [le relevé commun des dépendances](https://github.com/Shield-77/Shield-MP3-downloader/blob/main/LICENSING_STATUS.md) et [les notices tierces](THIRD_PARTY_NOTICES.md).
+
 ## Télécharger / Download
 
 **[MP4Player-Old3DS-v32.cia (v1.1.11)](https://github.com/Shield-77/Shield-MP4-Player/releases/download/v1.1.11/MP4Player-Old3DS-v32.cia)** · [Toutes les releases](https://github.com/Shield-77/Shield-MP4-Player/releases)
