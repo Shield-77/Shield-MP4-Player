@@ -214,10 +214,10 @@ static const UiTranslation UI_TRANSLATIONS[] = {
     {"A : j'ai compris", "A: Got it"},
     {"A : page suivante (%d/3)", "A: next page (%d/3)"},
     {"Choix de langue", "Language selection"},
-    {"Votre langue est bien le francais ?\nSeules le francais et l'anglais sont disponibles.", "Is English the right language for you?\nOnly French and English are available."},
-    {"Votre langue est bien l'anglais ?\nSeules le francais et l'anglais sont disponibles.", "Is English the right language for you?\nOnly French and English are available."},
-    {"Seules les langues francaise et anglaise sont disponibles.", "Only French and English are available."},
-    {"Seules les langues francaise et anglaise sont disponibles.\nLa langue detectee est-elle la bonne ?", "Only French and English are available.\nIs the detected language correct?"},
+    {"Votre langue est bien le francais ?\nSeules le francais et English sont disponibles.", "Is English the right language for you?\nOnly French and English are available."},
+    {"Votre langue est bien English ?\nSeules le francais et English sont disponibles.", "Is English the right language for you?\nOnly French and English are available."},
+    {"Seules les langues francaise et English sont disponibles.", "Only French and English are available."},
+    {"Seules les langues francaise et English sont disponibles.\nLa langue detectee est-elle la bonne ?", "Only French and English are available.\nIs the detected language correct?"},
     {"A : oui   B : non / English", "A: yes   B: no / English"},
     {"A : oui / Francais   B : non", "A: yes   B: no / Francais"},
     {"X maintenu au demarrage : choisir la langue", "Hold X at startup to change language"},
@@ -1067,11 +1067,11 @@ static void drawGuide(int page) {
 }
 static bool drawLanguagePrompt() {
     showTop(uiText("Choix de langue"),
-            uiText(uiLanguage.french?"Votre langue est bien le francais ?\nSeules le francais et l'anglais sont disponibles.":"Votre langue est bien l'anglais ?\nSeules le francais et l'anglais sont disponibles."),
+            uiText(uiLanguage.french?"Votre langue est bien le francais ?\nSeules le francais et English sont disponibles.":"Votre langue est bien English ?\nSeules le francais et English sont disponibles."),
             uiText(uiLanguage.french?"A : oui   B : non / English":"A : oui / Francais   B : non"));
     consoleClear();
     printf("\x1b[36;1mSHIELD MP4 PLAYER\x1b[0m\n\n");
-    printf("%s\n\n",uiText("Seules les langues francaise et anglaise sont disponibles."));
+    printf("%s\n\n",uiText("Seules les langues francaise et English sont disponibles."));
     printf("%s\n",uiText("X maintenu au demarrage : choisir la langue"));
     printf("\n%s\n",uiText(uiLanguage.french?"A : oui   B : non / English":"A : oui / Francais   B : non"));
     return true;
@@ -1221,7 +1221,7 @@ int main() {
     showBootLogo();
     bool languageConfirmed=confirmUiLanguage(languagePromptRequested);
     if(!languageConfirmed) startExitRequested=true;
-    if(languageConfirmed && !fileExists(GUIDE_FILE)) {
+    if(languageConfirmed && (languagePromptRequested || !fileExists(GUIDE_FILE))) {
         int page=0; drawGuide(page);
         while(aptMainLoop()) { hidScanInput(); u32 down=hidKeysDown(); if(down&KEY_START) { startExitRequested=true; break; } if(down&KEY_A) { if(page<2) { page++; drawGuide(page); } else { FILE *f=fopen(GUIDE_FILE,"wb"); if(f){fputs("1",f);fclose(f);} break; } } gspWaitForVBlank(); }
     }
